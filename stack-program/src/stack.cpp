@@ -5,18 +5,29 @@
 namespace Stack{
 	const int MAX_SIZE = 200;
 	char v[MAX_SIZE];
-	int top = -1;
+	const int top = 0;
+	int spotFilled = 0;
 }
 
 void Stack::push(char c){
-	top++;
-	if(top >= MAX_SIZE) throw Overflow();
-	else v[top] = c;
+	spotFilled++;
+	
+	if(spotFilled >= 200) throw Overflow();
+	else{
+		char indexBuff = v[0];
+		v[0] = c;
+		
+		for(int i = 1; i < MAX_SIZE; i++){ja
+			char secondIndexBuff = v[i];
+			v[i] = indexBuff;
+			indexBuff = secondIndexBuff;
+		}
+	}
 }
 
 char Stack::pop(){
-	top--;
-	if(top < 0) throw Underflow();
+	spotFilled--;
+	if(spotFilled < 0) throw Underflow();
 	else{
 		for(int i = 1; i < MAX_SIZE; i++){
 			v[i-1] = v[i];
