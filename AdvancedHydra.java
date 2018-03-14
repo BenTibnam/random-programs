@@ -40,7 +40,7 @@ public class AdvancedHydra {
     }
 
     public static void main(String args[]){
-        Hydra first = new Hydra();
+        AdvancedHydra first = new AdvancedHydra();
 
     }
 }
