@@ -20,7 +20,7 @@ public class GuessingBot{
         System.out.println("Lower");
         direction = 'l';
       }else if(number < randNumber){
-        System.out.println("Higer");
+        System.out.println("Higher");
         direction = 'h';
       }else{
         System.out.println("That's right! rand: " + randNumber + " = " + "you: " + number);
