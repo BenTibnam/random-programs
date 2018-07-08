@@ -51,6 +51,7 @@ public class GuessingBot{
   }
 
   public static void main(String args[]){
-    new GuessingBot().run();
+    GuessingBot gb = new GuessingBot();
+    gb.run();
   }
 }
