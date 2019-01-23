@@ -35,9 +35,15 @@ int main(int argc, char *argv[]){
 		file1 << "#define " << toUpper(filename) << "_H_\n";
 		file1 << "class " << filename << "{\nprivate:\npublic:\n\t" << filename << "()\n\tvirtural ~" << filename << "();\n};\n";
 		file1.close();
-
+		
 		std::ofstream file2;
 		file2.open(source);
+		
+		// filling out the source file
+		file2 << "#include \"" << header << "\"\n\n";
+		file2 << filename << "::" << filename << "(){}\n";
+		file2 << filename << "::~" << filename << "(){}\n\n";
+
 		file2.close();
 	}	
 	
