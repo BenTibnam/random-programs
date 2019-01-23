@@ -1,34 +1,46 @@
-/*
- * creates header and source files so you don't have to do so much on the console
- */
- 
 #include<iostream>
 #include<sstream>
+#include<string>
 #include<fstream>
+#include<locale>
+
+std::string toUpper(std::string original){
+	std::string temp = "";
+	std::locale loc;;
+
+	for(std::string::size_type i = 0; i < original.length(); i++){
+		temp += std::toupper(original[i], loc);
+	}
+
+	return temp;
+
+}
 
 int main(int argc, char *argv[]){
-	try{
-		std::string filename = argv[1];
+	
+	// building full list
+	char* files[argc-1];
+	int currentPosition = 0;
+
+	for(int i = 1; i < argc; i++){
+		std::string filename = argv[i];
 		std::string header = filename + ".h";
 		std::string source = filename + ".cpp";
 	
 		std::ofstream file1;
 		file1.open(header);
+		
+		// filling out the header
+		file1 << "#ifndef " << toUpper(filename) << "_H_\n";
+		file1 << "#define " << toUpper(filename) << "_H_\n";
+		file1 << "class " << filename << "{\nprivate:\npublic:\n\t" << filename << "()\n\tvirtural ~" << filename << "();\n};\n";
 		file1.close();
 
 		std::ofstream file2;
 		file2.open(source);
 		file2.close();
-
-		std::cout << "created " << filename << " files" << std::endl;
-		
-	}catch(std::logic_error le){
-		std::cout << "error: no file name provided" << std::endl;
-	}
+	}	
+	
 
 	return 0;
 }
-
-// TODO: make it so when we catch the exception we allow the user to enter a new file
-// TODO: allow the user to enter in a list of files
-// TODO: fill out the header files in the program
