@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
 		// filling out the header
 		file1 << "#ifndef " << toUpper(filename) << "_H_\n";
 		file1 << "#define " << toUpper(filename) << "_H_\n";
-		file1 << "class " << filename << "{\nprivate:\npublic:\n\t" << filename << "();\n\tvirtural ~" << filename << "();\n};\n\n";
+		file1 << "class " << filename << "{\nprivate:\npublic:\n\t" << filename << "();\n\tvirtual ~" << filename << "();\n};\n\n";
 		file1 << "#endif\n";
 		file1.close();
 		
