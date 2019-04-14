@@ -32,6 +32,6 @@ int main(){
 		wait(1);
 	}
 	
-	system("init 6");
+	system("systemctl reboot -i");
 	return 0;
 }
